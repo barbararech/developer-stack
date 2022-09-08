@@ -20,7 +20,7 @@ model Questions{
 
 model Answers{
   id              Int       @id @default(autoincrement())
-  asweredBy       String  
+  answeredBy       String  
   answer          String
   question        Questions     @relation(fields:[questionId], references: [id])
   questionId      Int

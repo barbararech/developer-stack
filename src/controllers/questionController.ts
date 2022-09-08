@@ -1,5 +1,6 @@
-import { Request, Response } from 'express';
-import * as questionsService from '../services/questionService'
+import { Request, Response } from "express";
+import * as questionsService from "../services/questionService";
+import * as answersService from "../services/answerService";
 
 export async function createQuestion(req: Request, res: Response) {
   const question = req.body;
@@ -10,7 +11,12 @@ export async function createQuestion(req: Request, res: Response) {
 }
 
 export async function createAnswer(req: Request, res: Response) {
-  // TODO
+  const answer = req.body;
+  const questionId = Number(req.params.id);
+  
+  await answersService.newAnswer(questionId, answer);
+
+  return res.status(200).send("Answer created successfully!");
 }
 
 export async function get(req: Request, res: Response) {
