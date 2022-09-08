@@ -10,3 +10,9 @@ export async function insertNewQuestion(question: questionTypes.NewQuestion) {
 export async function getQuestions() {
   return prisma.questions.findMany();
 }
+
+export async function getQuestionById(id: number) {
+  return prisma.questions.findFirst({
+    where: { id },
+  });
+}

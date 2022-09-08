@@ -6,3 +6,13 @@ export async function insertNewAnswer(answer: answerTypes.NewAnswer) {
     data: answer,
   });
 }
+
+export async function getAnswersById(questionId: number) {
+  return prisma.answers.findMany({
+    where: { questionId },
+    select:{
+      answeredBy:true,
+      answer:true
+    }
+  });
+}
