@@ -1,7 +1,12 @@
 import { Request, Response } from 'express';
+import * as questionsService from '../services/questionService'
 
 export async function createQuestion(req: Request, res: Response) {
-  // TODO
+  const question = req.body;
+
+  await questionsService.newQuestion(question);
+
+  return res.status(200).send("Question created successfully!");
 }
 
 export async function createAnswer(req: Request, res: Response) {
